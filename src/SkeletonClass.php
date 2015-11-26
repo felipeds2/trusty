@@ -1,6 +1,6 @@
 <?php
 
-namespace felipeds2\trusty;
+namespace Felipeds2\Trusty;
 
 class SkeletonClass
 {

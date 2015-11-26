@@ -11,7 +11,7 @@
         {
             "name": "Felipe Santos",
             "email": "felipeds2004@gmail.com",
-            "homepage": "www.lab123.com.br",
+            "homepage": "http://www.lab123.com.br",
             "role": "Developer"
         }
     ],
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "felipeds2\\trusty\\": "src"
+            "Felipeds2\\Trusty\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "felipeds2\\trusty\\Test\\": "tests"
+            "Felipeds2\\Trusty\\Test\\": "tests"
         }
     },
     "scripts": {

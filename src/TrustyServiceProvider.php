@@ -22,10 +22,10 @@ class TrustyServiceProvider extends ServiceProvider
     {
     	$this->publishes([
     		__DIR__ . '/src/migrations/' => base_path('/database/migrations'),
-    		__DIR__ . '/config/trusty.php' => config_path('trusty.php'),
+    		__DIR__ . '/../config/trusty.php' => config_path('trusty.php'),
     	]);
     	
-    	$this->mergeConfigFrom(__DIR__ . '/config/trusty.php', 'trusty');
+    	$this->mergeConfigFrom(__DIR__ . '/../config/trusty.php', 'trusty');
     }
 
     /**

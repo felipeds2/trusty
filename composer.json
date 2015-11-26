@@ -1,0 +1,44 @@
+{
+    "name": "felipeds2/trusty",
+    "description": "",
+    "keywords": [
+        "league",
+        "trusty"
+    ],
+    "homepage": "https://github.com/felipeds2/trusty",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Felipe Santos",
+            "email": "felipeds2004@gmail.com",
+            "homepage": "www.lab123.com.br",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : ">=5.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "felipeds2\\trusty\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "felipeds2\\trusty\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

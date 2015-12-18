@@ -22,11 +22,18 @@ class Role extends Model
     protected $fillable = ['name', 'description'];
     
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['permissions'];
+    
+    /**
      * Get the users that owns the role.
      */
     public function users()
     {
-    	return $this->belongsToMany(config('trusty.model.user'))->withTimestamps();
+    	return $this->belongsToMany(config('trusty.model.user'), 'user_role')->withTimestamps();
     }
     
     /**
@@ -34,7 +41,7 @@ class Role extends Model
      */
     public function permissions()
     {
-    	return $this->belongsToMany(config('trusty.model.permission'))->withTimestamps();
+    	return $this->belongsToMany(config('trusty.model.permission'), 'role_permission')->withTimestamps();
     }
     
     /**

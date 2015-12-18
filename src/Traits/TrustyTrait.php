@@ -4,6 +4,7 @@ namespace Felipeds2\Trusty\Traits;
 
 use Illuminate\Support\Collection;
 use Felipeds2\Trusty\Entities\Role;
+use Illuminate\Support\Facades\Log;
 
 trait TrustyTrait
 {
@@ -36,6 +37,24 @@ trait TrustyTrait
     }
     
     /**
+     * Determine whether the user has role that given by name parameter.
+     *
+     * @param $name
+     *
+     * @return bool
+     */
+    public function isSuperAdmin()
+    {
+    	foreach ($this->roles as $role) {
+    		if ($role->name == 'SUPERADMIN' || $role->slug == 'SUPERADMIN') {
+    			return true;
+    		}
+    	}
+    
+    	return false;
+    }
+    
+    /**
      * Determine whether the current user is not have role that given by name parameter.
      *
      * @return bool
@@ -54,15 +73,43 @@ trait TrustyTrait
      */
     public function has($permission)
     {
+    	if ($this->isSuperAdmin()) {
+    		return true;
+    	}
+    	
         foreach ($this->roles as $role) {
-            foreach ($role->permissions as $permission) {
-                if ($permission->name == $permission || $permission->slug == $permission || $permission->id == $permission) {
+            foreach ($role->permissions as $p) {
+                if ($p->name == $permission || $p->slug == $permission || $p->id == $permission) {
                     return true;
                 }
             }
         }
         
         return false;
+    }
+    
+    /**
+     * Verifica se o usuário possui qualquer uma das permissão recebidas
+     * 
+     * @param $array
+     *
+     * @return bool
+     */
+    public function hasAny($permissions)
+    {
+    	if ($this->isSuperAdmin()) {
+    		return true;
+    	}
+    	
+    	foreach ($this->roles as $role) {
+    		foreach ($role->permissions as $p) {
+    			if (in_array($p->name, $permissions) || in_array($p->slug, $permissions) || in_array($p->id, $permissions)) {
+    				return true;
+    			}
+    		}
+    	}
+    
+    	return false;
     }
     
     /**

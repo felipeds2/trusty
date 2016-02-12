@@ -28,9 +28,7 @@ class Permission extends Model
      */
     protected function getDateFormat()
     {
-    	return ($this->getConnection() instanceof Illuminate\Database\SqlServerConnection)
-    		? 'M d Y H:i:s:000A'
-    		: parent::getDateFormat();
+    	return config('trusty.date_format') ? config('trusty.date_format') : parent::getDateFormat();
     }
     
     /**

@@ -33,7 +33,19 @@ class Role extends Model
      */
     public function users()
     {
-    	return $this->belongsToMany(config('trusty.model.user'), 'user_role')->withTimestamps();
+    	return $this->belongsToMany(config('trusty.model.user'), 'user_role');
+    }
+    
+    /**
+     * Return the default date format from database
+     *
+     * @return string
+     */
+    protected function getDateFormat()
+    {
+    	return ($this->getConnection() instanceof Illuminate\Database\SqlServerConnection)
+    		? 'M d Y H:i:s:000A'
+    		: parent::getDateFormat();
     }
     
     /**
@@ -41,7 +53,7 @@ class Role extends Model
      */
     public function permissions()
     {
-    	return $this->belongsToMany(config('trusty.model.permission'), 'role_permission')->withTimestamps();
+    	return $this->belongsToMany(config('trusty.model.permission'), 'role_permission');
     }
     
     /**

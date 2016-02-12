@@ -22,11 +22,23 @@ class Permission extends Model
     protected $fillable = ['name', 'description'];
     
     /**
+     * Return the default date format from database
+     *
+     * @return string
+     */
+    protected function getDateFormat()
+    {
+    	return ($this->getConnection() instanceof Illuminate\Database\SqlServerConnection)
+    		? 'M d Y H:i:s:000A'
+    		: parent::getDateFormat();
+    }
+    
+    /**
      * Get the roles that owns the permission.
      */
     public function roles()
     {
-    	return $this->belongsToMany(config('trusty.model.role'))->withTimestamps();
+    	return $this->belongsToMany(config('trusty.model.role'));
     }
     
     /**

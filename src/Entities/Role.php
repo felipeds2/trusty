@@ -37,16 +37,6 @@ class Role extends Model
     }
     
     /**
-     * Return the default date format from database
-     *
-     * @return string
-     */
-    protected function getDateFormat()
-    {
-    	return config('trusty.date_format') ? config('trusty.date_format') : parent::getDateFormat();
-    }
-    
-    /**
      * Get the permissions that owns the role.
      */
     public function permissions()

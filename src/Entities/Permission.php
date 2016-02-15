@@ -22,16 +22,6 @@ class Permission extends Model
     protected $fillable = ['name', 'description'];
     
     /**
-     * Return the default date format from database
-     *
-     * @return string
-     */
-    protected function getDateFormat()
-    {
-    	return config('trusty.date_format') ? config('trusty.date_format') : parent::getDateFormat();
-    }
-    
-    /**
      * Get the roles that owns the permission.
      */
     public function roles()

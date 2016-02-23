@@ -97,7 +97,6 @@ trait TrustyTrait
      */
     public function hasAny($permissions)
     {
-    	return true;
     	if ($this->isSuperAdmin()) {
     		return true;
     	}
